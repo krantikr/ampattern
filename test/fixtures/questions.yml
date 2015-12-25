@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  question: MyText
+  option1: MyString
+  option2: MyString
+  option3: MyString
+  option4: MyString
+  answer: MyString
+  type: 1
+  company: 1
+  approve: false
+
+two:
+  question: MyText
+  option1: MyString
+  option2: MyString
+  option3: MyString
+  option4: MyString
+  answer: MyString
+  type: 1
+  company: 1
+  approve: false
