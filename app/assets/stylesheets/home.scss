@@ -20,7 +20,7 @@ body {
 
 #page-wrapper {
     width: 100%;
-    padding: 0;
+    padding: 10;
     background-color: #fff;
 }
 
@@ -35,7 +35,7 @@ body {
     }
 
     #page-wrapper {
-        padding: 10px;
+        padding: 10px 10px;
     }
 }
 
@@ -229,14 +229,48 @@ ul.alert-dropdown {
 }
 .logo{
 	color: #eaeaea !important;
-    font-size: 30px;
-    text-shadow: 0 4px 5px #000000;
+    text-decoration: none;
+    font-style: italic;
+}
+.logo:hover{
+    color: #eaeaea !important;
+    text-decoration: none;
+}
+.logo h1{
+    color: #ca3c08;
+    font-size: 20px;
+    font-weight: bold;
+    margin: 10px 23px 0;
+    text-shadow: 0 4px 2px #000000;
 }
 .slogan{
 	color: #fff;
     text-shadow: 1px 3px 2px #000;
-    font-size:12px;
+    font-size:11px;
+    margin-left: 20px
 }
 .navbar{
-	min-height: 70px ;
+	min-height: 50px ;
+}
+.navbar-inverse{
+    border:none;
+}
+.header-line{
+    border: 1px solid #333;
+    margin-bottom: 20px;
+    width: 200px;
+}
+.alert-success{
+    display:none;
+    position: absolute;
+    right: 0;
+    top: 65px;
+    width: 345px;
+}
+.alert-danger{
+    display:none;
+    position: absolute;
+    right: 0;
+    top: 65px;
+    width: 345px;
 }

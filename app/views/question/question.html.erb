@@ -1,0 +1,75 @@
+<div class="row">
+  <h2><%= params[:ques_type] %></h2>
+  <p class="header-line"></p>
+</div>
+<div class="alert alert-success">
+  <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+  <strong>Congratulations!</strong> Right Answer.
+</div>
+<div class="alert alert-danger">
+  <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+  <strong>Oops!</strong> Wrong Answer.
+</div>
+<% @questions.each do |question| %>
+  <div class="row">
+    <div class="col-sm-12">
+      <div>
+        <p><%= question.question %></p>
+      </div>
+      <div>
+        <div class="col-sm-6">
+          <span style="position: absolute; padding: 1px;"></span>
+          <p class="question-radio" data-option="<%= question.option1 %>"><input type="radio" name="option" style="margin-right:5px;" /><%= question.option1 %></p>
+        </div>
+        <div class="col-sm-6">
+          <span style="position: absolute; padding: 1px;"></span>
+          <p class="question-radio" data-option="<%= question.option2 %>"><input type="radio" name="option" style="margin-right:5px;" /><%= question.option2 %></p>
+        </div>
+        <div class="col-sm-6">
+          <span style="position: absolute; padding: 1px;"></span>
+          <p class="question-radio" data-option="<%= question.option3 %>"><input type="radio" name="option" style="margin-right:5px;" /><%= question.option3 %></p>
+        </div>
+        <div class="col-sm-6">
+          <span style="position: absolute; padding: 1px;"></span>
+          <p class="question-radio" data-option="<%= question.option4 %>"><input type="radio" name="option" style="margin-right:5px;" /><%= question.option4 %></p>
+        </div>
+        <span class="answer" data-ans="<%= question.answer %>"></span>
+      </div>
+      <div>
+        <div class="col-sm-2">
+          <i class="fa fa-thumbs-up"></i>
+          <span>Likes</span>
+        </div>
+        <div class="col-sm-2">
+          <i class="fa fa-comments"></i>
+          <span>Comments</span>
+        </div>
+        <div class="col-sm-8">
+          <i class="fa fa-folder-open"></i>
+          <span><%= Company.find(question.company_id).name %></span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <hr>
+<% end %>
+<script type="text/javascript">
+  $('.question-radio').on('click', function(){
+    user_ans = $(this).data('option');
+    answer = $('.answer').data('ans')
+    if(user_ans == answer)
+    {
+      $(this).prev().html('<i class="fa fa-check"></i>');
+      $(".alert-success").fadeTo(2000, 500).slideUp(500, function(){
+        $(".alert-success").alert('close');
+      });
+    }
+    else
+    {
+      $(this).prev().html('<i class="fa fa-times"></i>');
+      $(".alert-danger").fadeTo(2000, 500).slideUp(500, function(){
+        $(".alert-danger").alert('close');
+      });
+    }
+  });
+</script>

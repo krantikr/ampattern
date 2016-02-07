@@ -1,8 +1,11 @@
 Rails.application.routes.draw do
+
+  devise_for :users
   root 'home#index'
-  get 'home/about'
+  get 'about' => 'home#about'
 
-
+  get 'question' => 'question#question'
+  get 'company' => 'company#company'
   namespace "admin" do
     resources :question
   end

@@ -1,1 +1,66 @@
-<h1><%= @question.inspect %></h1>
+<div class="row">
+  <div class="col-lg-12">
+    <div class="top-25">
+      <%#= @questions.inspect %>
+      <div class="row">
+        <table id="myTable">
+          <thead>
+            <tr>
+              <th>Sl No</th>
+              <th>Question</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @questions.each_with_index do |question, i| %>
+              <tr>
+                <td><%= i+1 %></td>
+                <td>
+                  <p><%= question.question %></p>
+                  <div class="row">
+                    <div class="col-sm-6">
+                      <p>i) <%= question.option1 %></p>
+                      <p>iii) <%= question.option3 %></p>
+                    </div>
+                    <div class="col-sm-6">
+                      <p>ii) <%= question.option2 %></p>
+                      <p>iV) <%= question.option4 %></p>
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <p>Answer: <%= question.answer %></p>
+                    </div>
+                    <div class="col-sm-3">
+                      <p>Question Type: <%= question.question_type_id %></p>
+                    </div>
+                    <div class="col-sm-3">
+                      <p>Company: <%= question.company_id %></p>
+                    </div>
+                    <div class="col-sm-3">
+                      <p>Comments: 5</p>
+                    </div>
+                  </div>
+                </td>
+                <td>
+                  <p><%= link_to 'Edit', edit_admin_question_path(question) %></p>
+                  <p><%= link_to 'Delete', admin_question_path(question), method: 'DELETE', remote: true, class:'ques_delete' %></p>
+                  <p>Approved</p>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+<script type="text/javascript">
+  $(document).ready(function(){
+    $('#myTable').DataTable();
+    });
+  $('.ques_delete').on('click', function(){
+    $(this).parent().parent().parent().fadeOut()
+  })
+</script>

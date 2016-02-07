@@ -5,3 +5,20 @@
 .top-25{
 	margin-top:25px
 	}
+table {
+    width:100%;
+}
+table, th, td {
+    border: 1px solid #5f5f5f;
+    border-collapse: collapse;
+}
+th, td {
+    padding: 5px;
+    text-align: left;
+}
+table tr:nth-child(even) {
+    background-color: #000;
+}
+table tr:nth-child(odd) {
+   background-color:#fff;
+}

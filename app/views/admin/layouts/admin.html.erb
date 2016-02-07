@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Ampattern</title>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+    <%= stylesheet_link_tag '//cdn.datatables.net/1.10.10/css/jquery.dataTables.min.css' %>
+    <%= javascript_include_tag '//cdn.datatables.net/1.10.10/js/jquery.dataTables.min.js' %>
+  </head>
+  <body>
+    <div id="wrapper">
+      <%= render partial: "/admin/shared/left_navbar" %>
+      <div id="page-wrapper">
+        <div class="container-fluid">
+          <%= yield %>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
+<script type="text/javascript">
+  $( document ).ready(function() {
+    var w = $( window ).height() - 50;
+  $('#page-wrapper').css('min-height', w);
+    });
+</script>

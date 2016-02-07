@@ -1,34 +1,34 @@
 <div class="row">
   <div class="col-lg-12">
     <div class="top-25">
-      <%= form_tag(new_admin_question_path, {:method => :get}) do %>
+      <%= form_tag(admin_question_path, {:method => :PATCH}) do %>
         <div>
           <%= label_tag(:question, "Question") %>
-          <%= text_area_tag(:question) %>
+          <%= text_area_tag(:question, @question.question) %>
         </div>
         <div>
           <%= label_tag(:option_a, "Option A") %>
-          <%= text_field_tag(:option_a) %>
+          <%= text_field_tag(:option_a, @question.option1) %>
         </div>
         <div>
           <%= label_tag(:option_b, "Option B") %>
-          <%= text_field_tag(:option_b) %>
+          <%= text_field_tag(:option_b, @question.option2) %>
         </div>
         <div>
           <%= label_tag(:option_c, "Option C") %>
-          <%= text_field_tag(:option_c) %>
+          <%= text_field_tag(:option_c, @question.option3) %>
         </div>
         <div>
           <%= label_tag(:option_d, "Option D") %>
-          <%= text_field_tag(:option_d) %>
+          <%= text_field_tag(:option_d, @question.option4) %>
         </div>
         <div>
           <%= label_tag(:answer, "Answer") %>
-          <%= text_field_tag(:answer) %>
+          <%= text_field_tag(:answer, @question.answer) %>
         </div>
         <% @company_names.each do |company_name| %>
           <div>
-            <%= check_box_tag 'campony[]', company_name.id %>
+            <%= check_box_tag 'campony', company_name.id %>
             <%= label_tag(:campony, company_name.name ) %>
           </div>
         <% end %>

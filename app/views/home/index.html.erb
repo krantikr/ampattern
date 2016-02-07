@@ -3,7 +3,7 @@
   <div class="col-lg-12">
     <p class="text-shadow">
       <%= link_to 'AMPattern', root_path %> is a leading career portal helping career aspirants in their online Test. We publish best guidance and latest reading material to help our viewers in their upcoming competitive exams and interviews. This site will enlighten the nature and scope of interview questions that will be asked in various company interviews, keeping in view the present interviews scenario. Most companies use the same general questions during the interviews, and most of them are prepared for these queries, but when it comes about job specific questions, some candidates don't have enough preparation, in this section we carefully selected some commonly asked questions and their answers to help you be prepared for your job interview.Also one the important part of this website is that below we have listed all the Company Related Interview Questions and answers. Feel free to comment on any Company Related Interview Questions or answer by the comment feature available on the page...
-      <%= link_to 'Read More', home_about_path %>
+      <%= link_to 'Read More', about_path %>
     </p>
   </div>
 </div>
@@ -23,13 +23,13 @@
           </div>
         </div>
       </div>
-      <a href="#">
+      <%= link_to question_path(ques_type: 'Aptitude Questions') do %>
         <div class="panel-footer">
           <span class="pull-left">Aptitude Questions</span>
           <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
           <div class="clearfix"></div>
         </div>
-      </a>
+      <% end %>
     </div>
   </div>
   <div class="col-lg-3 col-md-6">
@@ -45,13 +45,13 @@
           </div>
         </div>
       </div>
-      <a href="#">
+      <%= link_to question_path(ques_type: 'English Questions') do %>
         <div class="panel-footer">
           <span class="pull-left">English Questions</span>
           <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
           <div class="clearfix"></div>
         </div>
-      </a>
+      <% end %>
     </div>
   </div>
   <div class="col-lg-3 col-md-6">
@@ -67,13 +67,13 @@
           </div>
         </div>
       </div>
-      <a href="#">
+      <%= link_to question_path(ques_type: 'Computer Questions') do %>
         <div class="panel-footer">
           <span class="pull-left">Computer Questions</span>
           <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
           <div class="clearfix"></div>
         </div>
-      </a>
+      <% end %>
     </div>
   </div>
   <div class="col-lg-3 col-md-6">
@@ -89,13 +89,13 @@
           </div>
         </div>
       </div>
-      <a href="#">
+      <%= link_to question_path(ques_type: 'Reasoning Questions') do %>
         <div class="panel-footer">
           <span class="pull-left">Reasoning Questions</span>
           <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
           <div class="clearfix"></div>
         </div>
-      </a>
+      <% end %>
     </div>
   </div>
 </div>

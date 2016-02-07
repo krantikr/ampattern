@@ -8,9 +8,9 @@
       <span class="icon-bar"></span>
       <span class="icon-bar"></span>
     </button>
-    <%= link_to root_path, :class=>"logo" do %>
-      <h1>AMPattern</h1>
-      <p class="slogan">Practice is the only key of success…</p>
+    <%= link_to root_path, :class=>"navbar-brand logo" do %>
+      <strong>AMPattern</strong><br>
+      <span class="slogan">Practice is the only key of success…</span>
     <% end %>
   </div>
   <!-- Top Menu Items -->
@@ -123,65 +123,10 @@
         <% end %>
       </li>
       <li>
-        <a href="javascript:;" data-toggle="collapse" data-target="#practice"><i class="fa fa-fw fa-arrows-v"></i> Practice Papers <i class="fa fa-fw fa-caret-down"></i></a>
-        <ul id="practice" class="collapse">
-          <li>
-            <%= link_to 'Aptitude Questions', question_path(ques_type: 'Aptitude Questions') %>
-          </li>
-          <li>
-            <%= link_to 'English Questions', question_path(ques_type: 'English Questions') %>
-          </li>
-          <li>
-            <%= link_to 'Computer Questions', question_path(ques_type: 'Computer Questions') %>
-          </li>
-          <li>
-            <%= link_to 'Reasoning Questions', question_path(ques_type: 'Reasoning Questions') %>
-          </li>
-        </ul>
+        <%= link_to 'All Questions', admin_question_index_path %>
       </li>
       <li>
-        <a href="javascript:;" data-toggle="collapse" data-target="#placement"><i class="fa fa-fw fa-arrows-v"></i> Companies <i class="fa fa-fw fa-caret-down"></i></a>
-        <ul id="placement" class="collapse">
-          <li>
-            <%= link_to 'IBM Questions', company_path(company_name: 'IBM') %>
-          </li>
-          <li>
-            <%= link_to 'TCS Questions', company_path(company_name: 'TCS') %>
-          </li>
-          <li>
-            <%= link_to 'CTS Questions', company_path(company_name: 'CTS') %>
-          </li>
-          <li>
-            <%= link_to 'HCL Questions', company_path(company_name: 'HCL') %>
-          </li>
-          <li>
-            <%= link_to 'IGate Questions', company_path(company_name: 'IGate') %>
-          </li>
-          <li>
-            <%= link_to 'Wipro Questions', company_path(company_name: 'Wipro') %>
-          </li>
-          <li>
-            <%= link_to 'Genpact Questions', company_path(company_name: 'Genpact') %>
-          </li>
-          <li>
-            <%= link_to 'Huawei Questions', company_path(company_name: 'Huawei') %>
-          </li>
-          <li>
-            <%= link_to 'Infosys Questions', company_path(company_name: 'Infosys') %>
-          </li>
-          <li>
-            <%= link_to 'Accenture Questions', company_path(company_name: 'Accenture') %>
-          </li>
-          <li>
-            <%= link_to 'Capgemini Questions', company_path(company_name: 'Capgemini') %>
-          </li>
-          <li>
-            <%= link_to 'Hexaware Questions', company_path(company_name: 'Hexaware') %>
-          </li>
-        </ul>
-      </li>
-      <li>
-        <a href="bootstrap-grid.html"><i class="fa fa-fw fa-bullhorn"></i> Students Speak </a>
+        <%= link_to 'Add Questions', new_admin_question_path %>
       </li>
       <li>
         <a href="bootstrap-grid.html"><i class="fa fa-fw fa-graduation-cap"></i> Off Campus Drives </a>
