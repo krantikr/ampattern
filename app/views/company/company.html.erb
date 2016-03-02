@@ -46,7 +46,7 @@
         </div>
         <div class="col-sm-8">
           <i class="fa fa-folder-open"></i>
-          <span><%= QuestionType.find(question.question_type_id).question_type %></span>
+          <span><%= question_name(question.question_type_id) %></span>
         </div>
       </div>
     </div>

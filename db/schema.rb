@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160207095045) do
+ActiveRecord::Schema.define(version: 20160301180903) do
 
   create_table "companies", force: :cascade do |t|
     t.string   "name"
@@ -33,7 +33,7 @@ ActiveRecord::Schema.define(version: 20160207095045) do
     t.string   "option4"
     t.string   "answer"
     t.integer  "question_type_id"
-    t.integer  "company_id"
+    t.string   "company_id"
     t.boolean  "approve",          default: false
     t.datetime "created_at",                       null: false
     t.datetime "updated_at",                       null: false
