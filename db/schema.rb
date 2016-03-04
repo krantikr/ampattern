@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20160303041119) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "companies", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at", null: false
@@ -33,7 +36,7 @@ ActiveRecord::Schema.define(version: 20160303041119) do
     t.string   "option4"
     t.string   "answer"
     t.integer  "question_type_id"
-    t.string   "company_id"
+    t.integer  "company_id"
     t.boolean  "approve",          default: false
     t.datetime "created_at",                       null: false
     t.datetime "updated_at",                       null: false
@@ -54,7 +57,7 @@ ActiveRecord::Schema.define(version: 20160303041119) do
     t.datetime "updated_at",                          null: false
   end
 
-  add_index "users", ["email"], name: "index_users_on_email", unique: true
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
 end

@@ -29,10 +29,9 @@ gem "font-awesome-rails"
 #Use for authentication
 gem 'devise'
 
-gem 'web-console', '~> 2.0'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
-
+gem 'unicorn'
 # Use Unicorn as the app server
 # gem 'unicorn'
 
@@ -40,9 +39,11 @@ gem 'web-console', '~> 2.0'
 # gem 'capistrano-rails', group: :development
 
 group :development, :test do
+  gem 'pg'
+  gem 'rails_12factor'
+  gem 'web-console', '~> 2.0'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
-  gem 'sqlite3'
 end
 
 group :production do
@@ -50,7 +51,6 @@ group :production do
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
-  gem 'pg'
   gem 'thin'
   gem 'therubyracer'
 end
