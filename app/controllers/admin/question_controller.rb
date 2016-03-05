@@ -27,7 +27,7 @@ class Admin::QuestionController < ApplicationController
   end
 
   def edit
-    @question = Question.find_by(params[:id])
+    @question = Question.find(params[:id])
     @question_types = QuestionType.all
     @company_names = Company.all
   end

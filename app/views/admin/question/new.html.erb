@@ -28,7 +28,7 @@
         </div>
         <% @company_names.each do |company_name| %>
           <div>
-            <%= check_box_tag 'campony[]', company_name.id %>
+            <%= check_box_tag 'campony', company_name.id %>
             <%= label_tag(:campony, company_name.name ) %>
           </div>
         <% end %>
