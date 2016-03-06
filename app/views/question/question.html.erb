@@ -19,21 +19,21 @@
       <div>
         <div class="col-sm-6">
           <span style="position: absolute; padding: 1px;"></span>
-          <p class="question-radio" data-option="<%= question.option1 %>"><input type="radio" name="option" style="margin-right:5px;" /><%= question.option1 %></p>
+          <p class="question-radio" data-option="<%= question.option1 %>" data-id="<%= question.id %>"><input type="radio" name="option" style="margin-right:5px;" /><%= question.option1 %></p>
         </div>
         <div class="col-sm-6">
           <span style="position: absolute; padding: 1px;"></span>
-          <p class="question-radio" data-option="<%= question.option2 %>"><input type="radio" name="option" style="margin-right:5px;" /><%= question.option2 %></p>
+          <p class="question-radio" data-option="<%= question.option2 %>" data-id="<%= question.id %>"><input type="radio" name="option" style="margin-right:5px;" /><%= question.option2 %></p>
         </div>
         <div class="col-sm-6">
           <span style="position: absolute; padding: 1px;"></span>
-          <p class="question-radio" data-option="<%= question.option3 %>"><input type="radio" name="option" style="margin-right:5px;" /><%= question.option3 %></p>
+          <p class="question-radio" data-option="<%= question.option3 %>" data-id="<%= question.id %>"><input type="radio" name="option" style="margin-right:5px;" /><%= question.option3 %></p>
         </div>
         <div class="col-sm-6">
           <span style="position: absolute; padding: 1px;"></span>
-          <p class="question-radio" data-option="<%= question.option4 %>"><input type="radio" name="option" style="margin-right:5px;" /><%= question.option4 %></p>
+          <p class="question-radio" data-option="<%= question.option4 %>" data-id="<%= question.id %>"><input type="radio" name="option" style="margin-right:5px;" /><%= question.option4 %></p>
         </div>
-        <span class="answer" data-ans="<%= question.answer %>"></span>
+        <span class="answer_<%= question.id %>" data-ans="<%= question.answer %>"></span>
       </div>
       <div>
         <div class="col-sm-2">
@@ -53,22 +53,29 @@
   </div>
   <hr>
 <% end %>
+
 <script type="text/javascript">
   $('.question-radio').on('click', function(){
     user_ans = $(this).data('option');
-    answer = $('.answer').data('ans')
+    user_id = $(this).data('id');
+    answer = $('.answer_'+user_id).data('ans')
+    console.log(user_ans)
+    console.log(answer)
+    console.log('.answer_'+user_id)
+    console.log(user_ans == answer)
+
     if(user_ans == answer)
     {
       $(this).prev().html('<i class="fa fa-check"></i>');
       $(".alert-success").fadeTo(2000, 500).slideUp(500, function(){
-        $(".alert-success").alert('close');
+        // $(".alert-success").alert('close');
       });
     }
     else
     {
       $(this).prev().html('<i class="fa fa-times"></i>');
       $(".alert-danger").fadeTo(2000, 500).slideUp(500, function(){
-        $(".alert-danger").alert('close');
+        // $(".alert-danger").alert('close');
       });
     }
   });

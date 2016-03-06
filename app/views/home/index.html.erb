@@ -18,7 +18,7 @@
             <i class="fa fa-pencil-square fa-5x"></i>
           </div>
           <div class="col-xs-9 text-right">
-            <div class="huge">26</div>
+            <div class="huge"><%= aptitude_size %></div>
             <div>Questions</div>
           </div>
         </div>
@@ -40,7 +40,7 @@
             <i class="fa fa-book fa-5x"></i>
           </div>
           <div class="col-xs-9 text-right">
-            <div class="huge">12</div>
+            <div class="huge"><%= english_size %></div>
             <div>Questions</div>
           </div>
         </div>
@@ -62,7 +62,7 @@
             <i class="fa fa-desktop fa-5x"></i>
           </div>
           <div class="col-xs-9 text-right">
-            <div class="huge">124</div>
+            <div class="huge"><%= computer_size %></div>
             <div>Questions</div>
           </div>
         </div>
@@ -84,7 +84,7 @@
             <i class="fa fa-support fa-5x"></i>
           </div>
           <div class="col-xs-9 text-right">
-            <div class="huge">13</div>
+            <div class="huge"><%= reasoning_size %></div>
             <div>Questions</div>
           </div>
         </div>
@@ -104,63 +104,27 @@
   <div class="col-lg-8">
     <div class="panel panel-default">
       <div class="panel-heading">
-        <h3 class="panel-title"><i class="fa fa-clock-o fa-fw"></i> Placement Papers </h3>
+        <h3 class="panel-title"><i class="fa fa-newspaper-o"></i> Placement Papers </h3>
       </div>
       <div class="panel-body">
         <div class="col-sm-6">
           <div class="list-group">
-            <a href="#" class="list-group-item">
-              <i class="fa fa-fw fa-calendar"></i> Calendar updated
-                  </a>
-            <a href="#" class="list-group-item">
-              <i class="fa fa-fw fa-comment"></i> Commented on a post
-                  </a>
-            <a href="#" class="list-group-item">
-              <i class="fa fa-fw fa-truck"></i> Order 392 shipped
-                  </a>
-            <a href="#" class="list-group-item">
-              <i class="fa fa-fw fa-money"></i> Invoice 653 has been paid
-                  </a>
-            <a href="#" class="list-group-item">
-              <i class="fa fa-fw fa-user"></i> A new user has been added
-                  </a>
-            <a href="#" class="list-group-item">
-              <i class="fa fa-fw fa-check"></i> Completed task: "pick up dry cleaning"
-                  </a>
-            <a href="#" class="list-group-item">
-              <i class="fa fa-fw fa-globe"></i> Saved the world
-                  </a>
-            <a href="#" class="list-group-item">
-              <i class="fa fa-fw fa-check"></i> Completed task: "fix error on sales page"
-                  </a>
+            <%= link_to 'IBM Questions', company_path(company_name: 'IBM'), class: "list-group-item" %>
+            <%= link_to 'TCS Questions', company_path(company_name: 'TCS'), class: "list-group-item" %>
+            <%= link_to 'CTS Questions', company_path(company_name: 'CTS'), class: "list-group-item" %>
+            <%= link_to 'HCL Questions', company_path(company_name: 'HCL'), class: "list-group-item" %>
+            <%= link_to 'IGate Questions', company_path(company_name: 'IGate'), class: "list-group-item" %>
+            <%= link_to 'Wipro Questions', company_path(company_name: 'Wipro'), class: "list-group-item" %>
           </div>
         </div>
         <div class="col-sm-6">
           <div class="list-group">
-            <a href="#" class="list-group-item">
-              <i class="fa fa-fw fa-calendar"></i> Calendar updated
-                  </a>
-            <a href="#" class="list-group-item">
-              <i class="fa fa-fw fa-comment"></i> Commented on a post
-                   </a>
-            <a href="#" class="list-group-item">
-              <i class="fa fa-fw fa-truck"></i> Order 392 shipped
-                  </a>
-            <a href="#" class="list-group-item">
-              <i class="fa fa-fw fa-money"></i> Invoice 653 has been paid
-                  </a>
-            <a href="#" class="list-group-item">
-              <i class="fa fa-fw fa-user"></i> A new user has been added
-                  </a>
-            <a href="#" class="list-group-item">
-              <i class="fa fa-fw fa-check"></i> Completed task: "pick up dry cleaning"
-                  </a>
-            <a href="#" class="list-group-item">
-              <i class="fa fa-fw fa-globe"></i> Saved the world
-                  </a>
-            <a href="#" class="list-group-item">
-              <i class="fa fa-fw fa-check"></i> Completed task: "fix error on sales page"
-                  </a>
+            <%= link_to 'Genpact Questions', company_path(company_name: 'Genpact'), class: "list-group-item" %>
+            <%= link_to 'Huawei Questions', company_path(company_name: 'Huawei'), class: "list-group-item" %>
+            <%= link_to 'Infosys Questions', company_path(company_name: 'Infosys'), class: "list-group-item" %>
+            <%= link_to 'Accenture Questions', company_path(company_name: 'Accenture'), class: "list-group-item" %>
+            <%= link_to 'Capgemini Questions', company_path(company_name: 'Capgemini'), class: "list-group-item" %>
+            <%= link_to 'Hexaware Questions', company_path(company_name: 'Hexaware'), class: "list-group-item" %>
           </div>
         </div>
       </div>
@@ -169,7 +133,7 @@
   <div class="col-lg-4">
     <div class="panel panel-default">
       <div class="panel-heading">
-        <h3 class="panel-title"><i class="fa fa-money fa-fw"></i> Add Questions </h3>
+        <h3 class="panel-title"><i class="fa fa-plus-square-o"></i> Add Questions </h3>
       </div>
       <div class="panel-body">
       </div>
