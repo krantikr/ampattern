@@ -135,7 +135,42 @@
       <div class="panel-heading">
         <h3 class="panel-title"><i class="fa fa-plus-square-o"></i> Add Questions </h3>
       </div>
-      <div class="panel-body">
+      <div class="panel-body field-right" style="font-size:12px">
+        <%= form_tag(new_admin_question_path, {:method => :get}) do %>
+        <div>
+          <%= label_tag(:question, "Question") %>
+          <%= text_area_tag(:question,'', :style => 'width: 96%; resize: vertical; height: 40px;') %>
+        </div>
+        <div>
+          <%= label_tag(:option_a, "Option A") %>
+          <%= text_field_tag(:option_a) %>
+        </div>
+        <div>
+          <%= label_tag(:option_b, "Option B") %>
+          <%= text_field_tag(:option_b) %>
+        </div>
+        <div>
+          <%= label_tag(:option_c, "Option C") %>
+          <%= text_field_tag(:option_c) %>
+        </div>
+        <div>
+          <%= label_tag(:option_d, "Option D") %>
+          <%= text_field_tag(:option_d) %>
+        </div>
+        <div>
+          <%= label_tag(:answer, "Answer", style: "width:56px") %>
+          <%= text_field_tag(:answer) %>
+        </div>
+        <div>
+          <%= label_tag(:campony, "Company Name" ) %>
+          <%= select_tag(:campony, options_for_select(@company_names.collect{ |c| [c.name, c.id]})) %>
+        </div>
+        <div>
+          <%= label_tag(:type, "Question Type") %>
+          <%= select_tag(:type, options_for_select(@question_types.collect{ |q| [q.question_type, q.id]})) %>
+        </div>
+        <%= submit_tag 'Save' %>
+      <% end %>
       </div>
     </div>
   </div>
