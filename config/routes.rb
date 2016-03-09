@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   get 'about' => 'home#about'
 
   get 'question' => 'question#question'
+  post 'add_question' => 'question#add_question'
   get 'company' => 'company#company'
   namespace "admin" do
     resources :question

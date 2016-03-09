@@ -67,16 +67,12 @@
     if(user_ans == answer)
     {
       $(this).prev().html('<i class="fa fa-check"></i>');
-      $(".alert-success").fadeTo(2000, 500).slideUp(500, function(){
-        // $(".alert-success").alert('close');
-      });
+      $(".alert-success").fadeTo(2000, 500).slideUp(500);
     }
     else
     {
       $(this).prev().html('<i class="fa fa-times"></i>');
-      $(".alert-danger").fadeTo(2000, 500).slideUp(500, function(){
-        // $(".alert-danger").alert('close');
-      });
+      $(".alert-danger").fadeTo(2000, 500).slideUp(500);
     }
   });
 </script>

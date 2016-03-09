@@ -1,4 +1,16 @@
+<style type="text/css">
+  label{
+    font-weight: 100 !important;
+  }
+  input{
+    width: 75%;
+  }
+</style>
 <!-- Page Heading -->
+<div class="alert alert-success">
+  <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+  Your comment is awaiting moderation.
+</div>
 <div class="row">
   <div class="col-lg-12">
     <p class="text-shadow">
@@ -136,43 +148,59 @@
         <h3 class="panel-title"><i class="fa fa-plus-square-o"></i> Add Questions </h3>
       </div>
       <div class="panel-body field-right" style="font-size:12px">
-        <%= form_tag(new_admin_question_path, {:method => :get}) do %>
+        <%= form_tag(add_question_path, {:method => :post}) do %>
         <div>
           <%= label_tag(:question, "Question") %>
-          <%= text_area_tag(:question,'', :style => 'width: 96%; resize: vertical; height: 40px;') %>
+          <%= text_area_tag(:question,'', :style => 'width: 96%; resize: vertical; height: 40px;', :required => true) %>
         </div>
         <div>
           <%= label_tag(:option_a, "Option A") %>
-          <%= text_field_tag(:option_a) %>
+          <%= text_field_tag(:option_a, '' , :required => true) %>
         </div>
         <div>
           <%= label_tag(:option_b, "Option B") %>
-          <%= text_field_tag(:option_b) %>
+          <%= text_field_tag(:option_b, '' , :required => true) %>
         </div>
         <div>
           <%= label_tag(:option_c, "Option C") %>
-          <%= text_field_tag(:option_c) %>
+          <%= text_field_tag(:option_c, '' , :required => true) %>
         </div>
         <div>
           <%= label_tag(:option_d, "Option D") %>
-          <%= text_field_tag(:option_d) %>
+          <%= text_field_tag(:option_d, '' , :required => true) %>
         </div>
         <div>
-          <%= label_tag(:answer, "Answer", style: "width:56px") %>
-          <%= text_field_tag(:answer) %>
+          <%= label_tag(:answer, "Answer", style: "padding-right: 8px;") %>
+          <%= text_field_tag(:answer, '' , :required => true) %>
+        </div>
+        <div>
+          <%= label_tag(:type, "Question Type", style: "padding-right:7px") %>
+          <%= select_tag(:type, options_for_select(@question_types.collect{ |q| [q.question_type, q.id]}), style:"width:175px") %>
         </div>
         <div>
           <%= label_tag(:campony, "Company Name" ) %>
-          <%= select_tag(:campony, options_for_select(@company_names.collect{ |c| [c.name, c.id]})) %>
+          <%= select_tag(:campony, options_for_select(@company_names.collect{ |c| [c.name, c.id]}), style:"width:175px") %>
         </div>
-        <div>
-          <%= label_tag(:type, "Question Type") %>
-          <%= select_tag(:type, options_for_select(@question_types.collect{ |q| [q.question_type, q.id]})) %>
-        </div>
-        <%= submit_tag 'Save' %>
+        <%= submit_tag 'Save', class: "save-btn", id:"add-question" %>
       <% end %>
       </div>
     </div>
   </div>
 </div>
 <!-- /.row -->
+<script type="text/javascript">
+$('form').submit(function() {  
+    var valuesToSubmit = $(this).serialize();
+    $.ajax({
+        type: "POST",
+        url: $(this).attr('action'),
+        data: valuesToSubmit,
+        dataType: "JSON" 
+    }).success(function(json){
+      $("form")[0].reset();
+      $(".alert-success").fadeTo(2000, 500).slideUp(500);
+    });
+    return false;
+});
+</script>
+

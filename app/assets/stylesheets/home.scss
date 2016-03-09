@@ -276,6 +276,15 @@ ul.alert-dropdown {
     width: 345px;
     z-index: 1;
 }
-label{
-    font-weight: 100 !important;
+.save-btn{
+    background-color: #ca3c08;
+    padding: 2px;
+    text-align: center;
+    color: #fff;
+    font-size: 14px;
+    width: 100px;
+    cursor:pointer;
+}
+.save-btn:hover {
+    background-color: #D25324;
 }
