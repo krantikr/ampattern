@@ -1,0 +1,128 @@
+.comment {
+  font-size: 11px;
+  font-weight: normal;
+  font-style: normal;
+  border-bottom: 1px solid;
+  /*border-left: 1px solid;*/
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding: 5px 15px;
+  color: #333;
+  border-color: #DDD;
+  background-color: #FFF;
+  clear: both;
+}
+
+.comment_actions {
+  float: right;
+}
+
+.comment_body {
+  padding-top: 3px;
+}
+
+.comment_body p {
+	margin: 0px;
+
+	overflow: hidden;
+}
+
+.comment_div {
+	clear: both;
+}
+
+.comment_form_actions {
+  margin-top: 15px;
+  margin-bottom: 10px;
+}
+
+.comment_form_field textarea {
+  padding: 0px;
+
+  width: 100%;
+}
+
+.comment_avatar {
+  float: left;
+  margin-bottom: 5px;
+  margin-right: 10px;
+}
+
+.comment_avatar img {
+  height: 35px;
+  width: 35px;
+}
+
+.comment_timestamp {
+  color: #666;
+  font-size: 10px;
+}
+
+.comment_votes {
+  float: right;
+  margin-top: 5px;
+  margin-bottom: 5px;
+
+  text-align: center;
+}
+
+.comment_votes input,
+.comment_votes img {
+  border: none;
+  background-color: transparent;
+  padding: 0px;
+  margin: 0px;
+}
+
+.comment_votes form {
+  margin: 0px;
+}
+
+.comment_upvote {
+  display: block;
+  height: 18px;
+  margin-top: 7px;
+  margin-bottom: 7px;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.comment_downvote {
+  display: block;
+  height: 18px;
+  margin-top: 7px;
+  margin-bottom: 7px;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.comment_like {
+  float: left;
+}
+
+.comment_like + .comment_vote_count {
+  float: right;
+}
+
+.comment_error_explanation {
+  margin-bottom: 10px;
+}
+
+.comment_error_explanation h3 {
+  margin-top: 5px;
+}
+
+.comment_error_explanation ul {
+  list-style-position: inside;
+}
+.thread_new_comment_link{
+  padding: 5px 15px 10px 15px;
+}
+.thread_new_comment_form {
+  padding: 5px 15px 10px 15px;
+}
+.comment_form_field textarea{
+  resize: vertical;
+  height: 40px;
+  padding: 5px;
+}

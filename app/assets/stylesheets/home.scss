@@ -288,3 +288,20 @@ ul.alert-dropdown {
 .save-btn:hover {
     background-color: #D25324;
 }
+.link span{
+    color: #777777;
+    cursor: pointer;
+}
+.link span:hover {
+    color: #000;
+    cursor: pointer;
+}
+hide{
+    display:none;
+}
+.comment_box {
+    border: 1px solid #eee;
+    margin: 3px 20px;
+    max-height: 300px;
+    overflow-y: auto;
+}

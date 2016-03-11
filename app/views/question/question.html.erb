@@ -35,23 +35,42 @@
         </div>
         <span class="answer_<%= question.id %>" data-ans="<%= question.answer %>"></span>
       </div>
-      <div>
-        <div class="col-sm-2">
-          <i class="fa fa-thumbs-up"></i>
-          <span>Likes</span>
+      <div class="col-sm-12">
+        <div class="col-sm-2 link">
+          <span><i class="fa fa-thumbs-up"></i> Likes</span>
         </div>
-        <div class="col-sm-2">
-          <i class="fa fa-comments"></i>
-          <span>Comments</span>
+        <div class="col-sm-3 link">
+          <span id="comment_<%= question.id %>"><i class="fa fa-comments"></i> Comments</span>
         </div>
-        <div class="col-sm-8">
-          <i class="fa fa-folder-open"></i>
-          <span><%= company_name(question.company_id) %></span>
+        <div class="col-sm-7 link">
+          <span><i class="fa fa-folder-open"></i> <%= company_name(question.company_id) %></span>
+        </div>
+      </div>
+      <div id="comment_box_<%= question.id %>">
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="comment_box">
+              <%= commontator_thread(question) %>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </div>
   <hr>
+<script type="text/javascript">
+  $('#comment_box_<%= question.id %>').hide()
+  $('#comment_<%= question.id %>').on("click", function(){
+    if($('#comment_box_<%= question.id %>').is(':visible')){
+      $("#comment_box_<%= question.id %>").slideUp();
+      $('#comment_<%= question.id %> span').css("color", "#777");
+    }
+    else{
+      $("#comment_box_<%= question.id %>").slideDown();
+      $('#comment_<%= question.id %> span').css("color", "#000");
+    }
+  })
+</script>
 <% end %>
 
 <script type="text/javascript">
