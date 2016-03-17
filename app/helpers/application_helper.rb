@@ -8,4 +8,5 @@ module ApplicationHelper
 		QuestionType.find(id).question_type
 	end
 
+
 end

@@ -20,7 +20,16 @@ class QuestionController < ApplicationController
     question.save
      respond_to do |format|
 	    format.json  { render :json => { :status => "ok", :message => "Success" }}
-	 end
+	   end
+  end
+
+  def vote
+    # raise request.ip.inspect
+    @question = Question.find(params[:id])
+    @question.vote!(request.ip)
+    respond_to do |format|
+      format.js
+    end
   end
 
 end

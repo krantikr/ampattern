@@ -1,5 +1,6 @@
 class Admin::QuestionController < ApplicationController
   before_filter :authenticate_user!
+  before_filter :admin
   layout :get_admin_layouts
   def index
     @questions = Question.all
@@ -58,4 +59,8 @@ class Admin::QuestionController < ApplicationController
 end
 def get_admin_layouts
   "admin/layouts/admin"
+end
+
+def admin
+   current_user.email == 'kranti_kumar@hotmail.com'
 end

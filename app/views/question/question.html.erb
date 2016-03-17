@@ -36,8 +36,16 @@
         <span class="answer_<%= question.id %>" data-ans="<%= question.answer %>"></span>
       </div>
       <div class="col-sm-12">
-        <div class="col-sm-2 link">
-          <span><i class="fa fa-thumbs-up"></i> Likes</span>
+        <div class="col-sm-2 link" id="vote<%= question.id %>">
+          <% if Vote.exists?(:ip => request.ip, :question_id => question.id) %>
+            <%= link_to vote_path(question.id), style: "text-decoration: none;", method: 'post', remote: true  do %>
+              <span style="color: #000;"><i class="fa fa-thumbs-up"></i> Like (<%= question.vote.count %>)</span>
+            <% end %>
+          <% else %>
+            <%= link_to vote_path(question.id), style: "text-decoration: none;", method: 'post', remote: true  do %>
+              <span><i class="fa fa-thumbs-up"></i> Like (<%= question.vote.count %>)</span>
+            <% end %>
+          <% end %>
         </div>
         <div class="col-sm-3 link">
           <span id="comment_<%= question.id %>"><i class="fa fa-comments"></i> Comments</span>
@@ -69,19 +77,26 @@
       $("#comment_box_<%= question.id %>").slideDown();
       $('#comment_<%= question.id %> span').css("color", "#000");
     }
-  })
+  });
+
+  // like start
+  // $('#vote-down-<%= question.id %>').on('click', function(){
+  //   console.log('vote-down-<%= question.id %>')
+  //   $('#vote-down-<%= question.id %> span').css("color", "#777");
+  // });
 </script>
 <% end %>
 
 <script type="text/javascript">
+  // answer check start
   $('.question-radio').on('click', function(){
     user_ans = $(this).data('option');
     user_id = $(this).data('id');
     answer = $('.answer_'+user_id).data('ans')
-    console.log(user_ans)
-    console.log(answer)
-    console.log('.answer_'+user_id)
-    console.log(user_ans == answer)
+    // console.log(user_ans)
+    // console.log(answer)
+    // console.log('.answer_'+user_id)
+    // console.log(user_ans == answer)
 
     if(user_ans == answer)
     {
@@ -94,4 +109,10 @@
       $(".alert-danger").fadeTo(2000, 500).slideUp(500);
     }
   });
+  // answer check end
+
+  
+ 
+
+
 </script>

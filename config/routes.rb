@@ -6,6 +6,7 @@ Rails.application.routes.draw do
 
   get 'question' => 'question#question'
   post 'add_question' => 'question#add_question'
+  post 'vote/:id' => 'question#vote', as: :vote
   get 'company' => 'company#company'
   namespace "admin" do
     resources :question
