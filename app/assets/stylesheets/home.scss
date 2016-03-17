@@ -305,3 +305,28 @@ hide{
     max-height: 300px;
     overflow-y: auto;
 }
+.options span{
+    cursor: pointer;
+}
+.right-ans{
+    border-radius: 100%;
+    height: 12px;
+    margin: 3px 0;
+    width: 12px;
+    background-color: #0A960A;
+    background: -webkit-linear-gradient(#14A714, #0B880B); 
+    background: -o-linear-gradient(#14A714, #0B880B); 
+    background: -moz-linear-gradient(#14A714, #0B880B); 
+    background: linear-gradient(#14A714, #0B880B); 
+}
+.wrong-ans{
+    border-radius: 100%;
+    height: 12px;
+    margin: 3px 0;
+    width: 12px;
+    background-color: #fa3c45;
+    background: -webkit-linear-gradient(#fa3c45, #dc0d17); 
+    background: -o-linear-gradient(#fa3c45, #dc0d17); 
+    background: -moz-linear-gradient(#fa3c45, #dc0d17); 
+    background: linear-gradient(#fa3c45, #dc0d17); 
+}

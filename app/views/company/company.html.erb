@@ -16,60 +16,89 @@
       <div>
         <p><%= question.question %></p>
       </div>
-      <div>
+      <div class="options">
         <div class="col-sm-6">
           <span style="position: absolute; padding: 1px;"></span>
-          <p class="question-radio" data-option="<%= question.option1 %>"><input type="radio" name="option" style="margin-right:5px;" /><%= question.option1 %></p>
+          <span class="question-radio" data-option="<%= question.option1 %>" data-id="<%= question.id %>"><input type="radio" name="option" style="margin-right:5px;" /><%= question.option1 %></span>
         </div>
         <div class="col-sm-6">
           <span style="position: absolute; padding: 1px;"></span>
-          <p class="question-radio" data-option="<%= question.option2 %>"><input type="radio" name="option" style="margin-right:5px;" /><%= question.option2 %></p>
+          <span class="question-radio" data-option="<%= question.option2 %>" data-id="<%= question.id %>"><input type="radio" name="option" style="margin-right:5px;" /><%= question.option2 %></span>
         </div>
         <div class="col-sm-6">
           <span style="position: absolute; padding: 1px;"></span>
-          <p class="question-radio" data-option="<%= question.option3 %>"><input type="radio" name="option" style="margin-right:5px;" /><%= question.option3 %></p>
+          <span class="question-radio" data-option="<%= question.option3 %>" data-id="<%= question.id %>"><input type="radio" name="option" style="margin-right:5px;" /><%= question.option3 %></span>
         </div>
         <div class="col-sm-6">
           <span style="position: absolute; padding: 1px;"></span>
-          <p class="question-radio" data-option="<%= question.option4 %>"><input type="radio" name="option" style="margin-right:5px;" /><%= question.option4 %></p>
+          <span class="question-radio" data-option="<%= question.option4 %>" data-id="<%= question.id %>"><input type="radio" name="option" style="margin-right:5px;" /><%= question.option4 %></span>
         </div>
-        <span class="answer" data-ans="<%= question.answer %>"></span>
+        <span class="answer_<%= question.id %>" data-ans="<%= question.answer %>"></span>
       </div>
-      <div>
-        <div class="col-sm-2">
-          <i class="fa fa-thumbs-up"></i>
-          <span>Likes</span>
+      <div class="col-sm-12" style="margin-top:15px; padding: 0;">
+        <div class="col-sm-2 link" id="vote<%= question.id %>">
+          <% if Vote.exists?(:ip => request.ip, :question_id => question.id) %>
+            <%= link_to vote_path(question.id), style: "text-decoration: none;", method: 'post', remote: true  do %>
+              <span style="color: #000;"><i class="fa fa-thumbs-up"></i> Like (<%= question.vote.count %>)</span>
+            <% end %>
+          <% else %>
+            <%= link_to vote_path(question.id), style: "text-decoration: none;", method: 'post', remote: true  do %>
+              <span><i class="fa fa-thumbs-up"></i> Like (<%= question.vote.count %>)</span>
+            <% end %>
+          <% end %>
         </div>
-        <div class="col-sm-2">
-          <i class="fa fa-comments"></i>
-          <span>Comments</span>
+        <div class="col-sm-3 link">
+          <span id="comment_<%= question.id %>"><i class="fa fa-comments"></i> Comments</span>
         </div>
-        <div class="col-sm-8">
-          <i class="fa fa-folder-open"></i>
-          <span><%= question_name(question.question_type_id) %></span>
+        <div class="col-sm-7 link">
+          <%= link_to question_path(ques_type: question_name(question.question_type_id)), style: "text-decoration: none;" do %>
+          <span><i class="fa fa-folder-open"></i> <%= question_name(question.question_type_id) %></span>
+          <% end %>
+        </div>
+      </div>
+      <div id="comment_box_<%= question.id %>">
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="comment_box">
+              <%= commontator_thread(question) %>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </div>
   <hr>
-<% end %>
 <script type="text/javascript">
+  $('#comment_box_<%= question.id %>').hide()
+  $('#comment_<%= question.id %>').on("click", function(){
+    if($('#comment_box_<%= question.id %>').is(':visible')){
+      $("#comment_box_<%= question.id %>").slideUp();
+      $('#comment_<%= question.id %> span').css("color", "#777");
+    }
+    else{
+      $("#comment_box_<%= question.id %>").slideDown();
+      $('#comment_<%= question.id %> span').css("color", "#000");
+    }
+  });
+</script>
+<% end %>
+
+<script type="text/javascript">
+  // answer check start
   $('.question-radio').on('click', function(){
     user_ans = $(this).data('option');
-    answer = $('.answer').data('ans')
+    user_id = $(this).data('id');
+    answer = $('.answer_'+user_id).data('ans')
     if(user_ans == answer)
     {
       $(this).prev().html('<i class="fa fa-check"></i>');
-      $(".alert-success").fadeTo(2000, 500).slideUp(500, function(){
-        $(".alert-success").alert('close');
-      });
+      $(".alert-success").fadeTo(2000, 500).slideUp(500);
     }
     else
     {
       $(this).prev().html('<i class="fa fa-times"></i>');
-      $(".alert-danger").fadeTo(2000, 500).slideUp(500, function(){
-        $(".alert-danger").alert('close');
-      });
+      $(".alert-danger").fadeTo(2000, 500).slideUp(500);
     }
   });
+  // answer check end
 </script>

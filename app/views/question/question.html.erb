@@ -16,26 +16,26 @@
       <div>
         <p><%= question.question %></p>
       </div>
-      <div>
+      <div class="options">
         <div class="col-sm-6">
           <span style="position: absolute; padding: 1px;"></span>
-          <p class="question-radio" data-option="<%= question.option1 %>" data-id="<%= question.id %>"><input type="radio" name="option" style="margin-right:5px;" /><%= question.option1 %></p>
+          <span class="question-radio" data-option="<%= question.option1 %>" data-id="<%= question.id %>"><input type="radio" name="option" style="margin-right:5px;" /><%= question.option1 %></span>
         </div>
         <div class="col-sm-6">
           <span style="position: absolute; padding: 1px;"></span>
-          <p class="question-radio" data-option="<%= question.option2 %>" data-id="<%= question.id %>"><input type="radio" name="option" style="margin-right:5px;" /><%= question.option2 %></p>
+          <span class="question-radio" data-option="<%= question.option2 %>" data-id="<%= question.id %>"><input type="radio" name="option" style="margin-right:5px;" /><%= question.option2 %></span>
         </div>
         <div class="col-sm-6">
           <span style="position: absolute; padding: 1px;"></span>
-          <p class="question-radio" data-option="<%= question.option3 %>" data-id="<%= question.id %>"><input type="radio" name="option" style="margin-right:5px;" /><%= question.option3 %></p>
+          <span class="question-radio" data-option="<%= question.option3 %>" data-id="<%= question.id %>"><input type="radio" name="option" style="margin-right:5px;" /><%= question.option3 %></span>
         </div>
         <div class="col-sm-6">
           <span style="position: absolute; padding: 1px;"></span>
-          <p class="question-radio" data-option="<%= question.option4 %>" data-id="<%= question.id %>"><input type="radio" name="option" style="margin-right:5px;" /><%= question.option4 %></p>
+          <span class="question-radio" data-option="<%= question.option4 %>" data-id="<%= question.id %>"><input type="radio" name="option" style="margin-right:5px;" /><%= question.option4 %></span>
         </div>
         <span class="answer_<%= question.id %>" data-ans="<%= question.answer %>"></span>
       </div>
-      <div class="col-sm-12">
+      <div class="col-sm-12" style="margin-top:15px; padding: 0;">
         <div class="col-sm-2 link" id="vote<%= question.id %>">
           <% if Vote.exists?(:ip => request.ip, :question_id => question.id) %>
             <%= link_to vote_path(question.id), style: "text-decoration: none;", method: 'post', remote: true  do %>
@@ -51,7 +51,9 @@
           <span id="comment_<%= question.id %>"><i class="fa fa-comments"></i> Comments</span>
         </div>
         <div class="col-sm-7 link">
+          <%= link_to company_path(company_name: company_name(question.company_id)), style: "text-decoration: none;" do %>
           <span><i class="fa fa-folder-open"></i> <%= company_name(question.company_id) %></span>
+          <% end %>
         </div>
       </div>
       <div id="comment_box_<%= question.id %>">
@@ -78,12 +80,6 @@
       $('#comment_<%= question.id %> span').css("color", "#000");
     }
   });
-
-  // like start
-  // $('#vote-down-<%= question.id %>').on('click', function(){
-  //   console.log('vote-down-<%= question.id %>')
-  //   $('#vote-down-<%= question.id %> span').css("color", "#777");
-  // });
 </script>
 <% end %>
 
@@ -93,26 +89,16 @@
     user_ans = $(this).data('option');
     user_id = $(this).data('id');
     answer = $('.answer_'+user_id).data('ans')
-    // console.log(user_ans)
-    // console.log(answer)
-    // console.log('.answer_'+user_id)
-    // console.log(user_ans == answer)
-
     if(user_ans == answer)
     {
-      $(this).prev().html('<i class="fa fa-check"></i>');
+      $(this).prev().html('<div class="right-ans"></div>');
       $(".alert-success").fadeTo(2000, 500).slideUp(500);
     }
     else
     {
-      $(this).prev().html('<i class="fa fa-times"></i>');
+      $(this).prev().html('<div class="wrong-ans"></div>');
       $(".alert-danger").fadeTo(2000, 500).slideUp(500);
     }
   });
   // answer check end
-
-  
- 
-
-
 </script>
