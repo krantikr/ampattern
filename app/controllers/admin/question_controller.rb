@@ -1,10 +1,10 @@
 class Admin::QuestionController < ApplicationController
   before_filter :authenticate_user!
-  before_filter :admin
+  before_filter :is_admin
   layout :get_admin_layouts
+
   def index
     @questions = Question.all
-
   end
 
   def new
@@ -61,6 +61,17 @@ def get_admin_layouts
   "admin/layouts/admin"
 end
 
-def admin
-   current_user.email == 'kranti_kumar@hotmail.com'
-end
+
+private
+
+  def is_admin
+    if user_signed_in?
+     if current_user.email == 'kranti_kumar@hotmail.com'
+       true
+     else
+       redirect_to root_path
+     end
+    else
+      redirect_to login_path
+    end
+  end
