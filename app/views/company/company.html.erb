@@ -91,12 +91,12 @@
     answer = $('.answer_'+user_id).data('ans')
     if(user_ans == answer)
     {
-      $(this).prev().html('<i class="fa fa-check"></i>');
+      $(this).prev().html('<div class="right-ans"></div>');
       $(".alert-success").fadeTo(2000, 500).slideUp(500);
     }
     else
     {
-      $(this).prev().html('<i class="fa fa-times"></i>');
+      $(this).prev().html('<div class="wrong-ans"></div>');
       $(".alert-danger").fadeTo(2000, 500).slideUp(500);
     }
   });
