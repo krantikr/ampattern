@@ -8,7 +8,6 @@ class Admin::QuestionController < ApplicationController
   end
 
   def new
-    # raise params.inspect
     @question_types = QuestionType.all
     @company_names = Company.all
     question = Question.new
@@ -20,6 +19,9 @@ class Admin::QuestionController < ApplicationController
     question.answer = params[:answer]
     question.question_type_id = params[:type]
     question.company_id = params[:campony]
+    if user_signed_in?
+      question.user_id = current_user.id
+    end
     question.approve = true
     question.save
   end

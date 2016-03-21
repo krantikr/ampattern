@@ -16,6 +16,9 @@ class QuestionController < ApplicationController
     question.answer = params[:answer]
     question.question_type_id = params[:type]
     question.company_id = params[:campony]
+    if user_signed_in?
+      question.user_id = current_user.id
+    end
     question.approve = false
     question.save
      respond_to do |format|

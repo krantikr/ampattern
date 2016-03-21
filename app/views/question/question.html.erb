@@ -48,12 +48,15 @@
           <% end %>
         </div>
         <div class="col-sm-3 link">
-          <span id="comment_<%= question.id %>"><i class="fa fa-comments"></i> Comments</span>
+          <span id="comment_<%= question.id %>"><i class="fa fa-comments"></i> Comments (<%= question.thread.filtered_comments.count.to_s %>)</span>
         </div>
-        <div class="col-sm-7 link">
+        <div class="col-sm-3 link">
           <%= link_to company_path(company_name: company_name(question.company_id)), style: "text-decoration: none;" do %>
           <span><i class="fa fa-folder-open"></i> <%= company_name(question.company_id) %></span>
           <% end %>
+        </div>
+        <div class="col-sm-4 link">
+          <span><i class="fa fa-user"></i> <%= question_posted_by(question) %></span>
         </div>
       </div>
       <div id="comment_box_<%= question.id %>">
