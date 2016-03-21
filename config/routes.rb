@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   post 'add_question' => 'question#add_question'
   post 'vote/:id' => 'question#vote', as: :vote
   get 'company' => 'company#company'
+  resources :profile
+  
   namespace "admin" do
     resources :question
   end

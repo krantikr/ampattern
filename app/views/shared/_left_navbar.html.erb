@@ -95,19 +95,30 @@
         </li>
       </ul>
     </li> -->
+    <li class="dropdown">
+      <a href="#" data-toggle="modal" data-target="#myModal">
+        <i class="fa fa-plus-square-o"></i> Add Questions
+      </a>
+    </li>
     <% if user_signed_in? %>
       <li class="dropdown">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> John Smith <b class="caret"></b></a>
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <%= current_user.email.to_s.split('@')[0].humanize %> <b class="caret"></b></a>
         <ul class="dropdown-menu">
-          <li>
-            <a href="#"><i class="fa fa-fw fa-user"></i> Profile</a>
-          </li>
+          <% if false %>
+            <li>
+              <%= link_to profile_index_path do %>
+                <i class="fa fa-fw fa-user"></i> Profile
+              <% end %>
+            </li>
+          <% end %>
           <!-- <li>
             <a href="#"><i class="fa fa-fw fa-envelope"></i> Inbox</a>
-          </li>
-          <li>
-            <a href="#"><i class="fa fa-fw fa-gear"></i> Settings</a>
           </li> -->
+          <li>
+            <%= link_to edit_user_registration_path do %>
+              <i class="fa fa-fw fa-gear"></i> Settings</a>
+            <% end %>
+          </li>
           <li class="divider"></li>
           <li>
             <%= link_to destroy_user_session_path, method: 'DELETE' do %>

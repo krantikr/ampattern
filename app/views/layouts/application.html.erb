@@ -7,10 +7,99 @@
     <%= csrf_meta_tags %>
   </head>
   <body>
+  <div id="fb-root"></div>
+    
     <div id="wrapper">
       <%= render partial: "/shared/left_navbar" %>
       <div id="page-wrapper">
         <div class="container-fluid">
+          <!-- Modal start -->
+          <div class="modal fade" id="myModal" role="dialog">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                  <h4 class="modal-title"><i class="fa fa-plus-square-o"></i> Add Questions</h4>
+                </div>
+                <div class="modal-body add-questions">
+                  <div class="alert alert-success1 fade in" style="display: none;">
+                    <a class="close" title="close" aria-label="close" data-dismiss="alert" href="#">×</a>
+                    Your Question has been successfully submitted.
+                  </div>
+                  <%= form_tag(add_question_path, {:method => :post, id:'add_question'}) do %>
+                    <div>
+                      <div class="col-xs-12 col-sm-5 col-md-4">
+                        <%= label_tag(:question, "Question") %>
+                      </div>
+                      <div class="col-xs-12 col-sm-7 col-md-8">
+                        <%= text_area_tag(:question,'', :style => 'resize: vertical; height: 40px;', :required => true) %>
+                      </div>
+                    </div>
+                    <div>
+                      <div class="col-xs-12 col-sm-5 col-md-4">
+                        <%= label_tag(:option_a, "Option A") %>
+                      </div>
+                      <div class="col-xs-12 col-sm-7 col-md-8">
+                        <%= text_field_tag(:option_a, '' , :required => true) %>
+                      </div>
+                    </div>
+                    <div>
+                      <div class="col-xs-12 col-sm-5 col-md-4">
+                        <%= label_tag(:option_b, "Option B") %>
+                      </div>
+                      <div class="col-xs-12 col-sm-7 col-md-8">
+                        <%= text_field_tag(:option_b, '' , :required => true) %>
+                      </div>
+                    </div>
+                    <div>
+                      <div class="col-xs-12 col-sm-5 col-md-4">
+                        <%= label_tag(:option_c, "Option C") %>
+                      </div>
+                      <div class="col-xs-12 col-sm-7 col-md-8">
+                        <%= text_field_tag(:option_c, '' , :required => true) %>
+                      </div>
+                    </div>
+                    <div>
+                      <div class="col-xs-12 col-sm-5 col-md-4">
+                        <%= label_tag(:option_d, "Option D") %>
+                      </div>
+                      <div class="col-xs-12 col-sm-7 col-md-8">
+                        <%= text_field_tag(:option_d, '' , :required => true) %>
+                      </div>
+                    </div>
+                    <div>
+                      <div class="col-xs-12 col-sm-5 col-md-4">
+                        <%= label_tag(:answer, "Answer", style: "padding-right: 8px;") %>
+                      </div>
+                      <div class="col-xs-12 col-sm-7 col-md-8">
+                        <%= text_field_tag(:answer, '' , :required => true) %>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <div class="col-xs-12 col-sm-5 col-md-4">
+                        <%= label_tag(:type, "Question Type", style: "padding-right:7px") %>
+                      </div>
+                      <div class="col-xs-12 col-sm-7 col-md-8">
+                        <%= select_tag(:type, options_for_select(QuestionType.all.collect{ |q| [q.question_type, q.id]}), class:"form-control") %>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <div class="col-xs-12 col-sm-5 col-md-4">
+                        <%= label_tag(:campony, "Company Name" ) %>
+                      </div>
+                      <div class="col-xs-12 col-sm-7 col-md-8">
+                        <%= select_tag(:campony, options_for_select(Company.all.collect{ |c| [c.name, c.id]}), class:"form-control", style:'margin-top:2px;') %>
+                      </div>
+                    </div>
+                    <div style="padding: 2px 15px">
+                      <%= submit_tag 'Submit', class: "save-btn", id:"add-question", style: "margin-top:10px" %>
+                    </div>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Modal end -->
           <%= yield %>
         </div>
       </div>
@@ -22,4 +111,18 @@
     var w = $( window ).height() - 50;
   $('#page-wrapper').css('min-height', w);
     });
+
+  $('form#add_question').submit(function() {  
+      var valuesToSubmit = $(this).serialize();
+      $.ajax({
+          type: "POST",
+          url: $(this).attr('action'),
+          data: valuesToSubmit,
+          dataType: "JSON" 
+      }).success(function(json){
+        $("form#add_question")[0].reset();
+        $(".alert-success1").slideDown(2000, 500).slideUp(500);
+      });
+      return false;
+  });
 </script>

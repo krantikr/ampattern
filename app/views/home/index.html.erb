@@ -1,3 +1,11 @@
+<script>(function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.5&appId=595694630445940";
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+</script>
 <style type="text/css">
   label{
     font-weight: 100 !important;
@@ -142,65 +150,15 @@
       </div>
     </div>
   </div>
-  <div class="col-lg-4">
+  <div class="col-lg-4" style="min-height: 300px">
     <div class="panel panel-default">
       <div class="panel-heading">
-        <h3 class="panel-title"><i class="fa fa-plus-square-o"></i> Add Questions </h3>
+        <h3 class="panel-title"><i class="fa fa-thumbs-up"></i> Like us on Facebook </h3>
       </div>
-      <div class="panel-body field-right" style="font-size:12px">
-        <%= form_tag(add_question_path, {:method => :post}) do %>
-        <div>
-          <%= label_tag(:question, "Question") %>
-          <%= text_area_tag(:question,'', :style => 'width: 96%; resize: vertical; height: 40px;', :required => true) %>
-        </div>
-        <div>
-          <%= label_tag(:option_a, "Option A") %>
-          <%= text_field_tag(:option_a, '' , :required => true) %>
-        </div>
-        <div>
-          <%= label_tag(:option_b, "Option B") %>
-          <%= text_field_tag(:option_b, '' , :required => true) %>
-        </div>
-        <div>
-          <%= label_tag(:option_c, "Option C") %>
-          <%= text_field_tag(:option_c, '' , :required => true) %>
-        </div>
-        <div>
-          <%= label_tag(:option_d, "Option D") %>
-          <%= text_field_tag(:option_d, '' , :required => true) %>
-        </div>
-        <div>
-          <%= label_tag(:answer, "Answer", style: "padding-right: 8px;") %>
-          <%= text_field_tag(:answer, '' , :required => true) %>
-        </div>
-        <div>
-          <%= label_tag(:type, "Question Type", style: "padding-right:7px") %>
-          <%= select_tag(:type, options_for_select(@question_types.collect{ |q| [q.question_type, q.id]}), style:"width:175px") %>
-        </div>
-        <div>
-          <%= label_tag(:campony, "Company Name" ) %>
-          <%= select_tag(:campony, options_for_select(@company_names.collect{ |c| [c.name, c.id]}), style:"width:175px") %>
-        </div>
-        <%= submit_tag 'Save', class: "save-btn", id:"add-question" %>
-      <% end %>
-      </div>
+      <div class="fb-page" data-href="https://www.facebook.com/ampattern/" data-tabs="timeline" data-height="300px" data-small-header="true" data-adapt-container-width="true" data-hide-cover="true" data-show-facepile="true"><div class="fb-xfbml-parse-ignore"><blockquote cite="https://www.facebook.com/ampattern/"><a href="https://www.facebook.com/ampattern/">AMPattern</a></blockquote></div></div>
     </div>
   </div>
 </div>
 <!-- /.row -->
-<script type="text/javascript">
-$('form').submit(function() {  
-    var valuesToSubmit = $(this).serialize();
-    $.ajax({
-        type: "POST",
-        url: $(this).attr('action'),
-        data: valuesToSubmit,
-        dataType: "JSON" 
-    }).success(function(json){
-      $("form")[0].reset();
-      $(".alert-success").fadeTo(2000, 500).slideUp(500);
-    });
-    return false;
-});
-</script>
+
 

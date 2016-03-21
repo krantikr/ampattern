@@ -268,6 +268,11 @@ ul.alert-dropdown {
     width: 345px;
     z-index: 1;
 }
+.alert-success1 {
+    background-color: #dff0d8;
+    border-color: #d6e9c6;
+    color: #3c763d;
+}
 .alert-danger{
     display:none;
     position: fixed;
@@ -276,17 +281,40 @@ ul.alert-dropdown {
     width: 345px;
     z-index: 1;
 }
+.alert-danger1 {
+    background-color: #f2dede;
+    border-color: #ebccd1;
+    color: #a94442;
+} 
+.alert-danger1 #error_explanation h2{
+    font-size:15px;
+}
+.alert-danger1 #error_explanation ul li{
+    font-size:13px;
+}
 .save-btn{
-    background-color: #ca3c08;
-    padding: 2px;
+    background: rgba(0, 0, 0, 0) linear-gradient(#14a714, #0b880b) repeat scroll 0 0;
+    padding: 2px 15px;
     text-align: center;
     color: #fff;
     font-size: 14px;
-    width: 100px;
     cursor:pointer;
+    border:0;
 }
 .save-btn:hover {
-    background-color: #D25324;
+    text-shadow: 1px 1px 1px #333;
+}
+.cancel-btn{
+    background: rgba(0, 0, 0, 0) linear-gradient(#fa3c45, #dc0d17) repeat scroll 0 0;
+    padding: 2px 15px;
+    text-align: center;
+    color: #fff;
+    font-size: 14px;
+    cursor:pointer;
+    border:0;
+}
+.cancel-btn:hover {
+    text-shadow: 1px 1px 1px #666666;
 }
 .link span{
     color: #777777;
@@ -329,4 +357,33 @@ hide{
     background: -o-linear-gradient(#fa3c45, #dc0d17); 
     background: -moz-linear-gradient(#fa3c45, #dc0d17); 
     background: linear-gradient(#fa3c45, #dc0d17); 
+}
+.resume-heading{
+    border-bottom:1px solid #ddd;
+    padding-bottom: 10px;
+}
+.resume-heading span{
+    color: #555555;
+}
+.resume-body div{
+    padding-bottom:10px;
+}
+.resume-body h5{
+    font-weight: 600;
+}
+.resume-body p{
+    font-size:13px;
+    padding-left:10px;
+}
+.resume-body span{
+    font-size:13px;
+    color: #555555;
+    padding-left:10px;
+}
+.add-questions input, .add-questions textarea{
+    width:100%;
+}
+.add-questions .form-control{
+    height:25px !important;
+    padding: 2px 12px;
 }
