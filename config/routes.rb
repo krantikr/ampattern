@@ -5,11 +5,18 @@ Rails.application.routes.draw do
   get 'about' => 'home#about'
 
   get 'question' => 'question#question'
+  post 'add_question' => 'question#add_question'
+  post 'vote/:id' => 'question#vote', as: :vote
   get 'company' => 'company#company'
+  resources :profile
+  
   namespace "admin" do
     resources :question
+    get 'not_approved' => 'question#not_approved', as: :not_approved
+    post 'approve/:id' => 'question#approve', as: :approve
   end
-
+  #comments model
+  mount Commontator::Engine => '/commontator'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

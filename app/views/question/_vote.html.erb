@@ -1,0 +1,10 @@
+<% question = @question %>
+<% if Vote.exists?(:ip => request.ip, :question_id => question.id) %>
+	<%= link_to vote_path(question.id), style: "text-decoration: none;", id:"vote-down-#{question.id}", method: 'post', remote: true  do %>
+	  <span style="color: #000;"><i class="fa fa-thumbs-up"></i> Like (<%= question.vote.count %>)</span>
+	<% end %>
+<% else %>
+	<%= link_to vote_path(question.id), style: "text-decoration: none;", id: "vote-up-#{question.id}", method: 'post', remote: true  do %>
+	  <span><i class="fa fa-thumbs-up"></i> Like (<%= question.vote.count %>)</span>
+	<% end %>
+<% end %>

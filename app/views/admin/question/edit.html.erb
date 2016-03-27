@@ -26,12 +26,10 @@
           <%= label_tag(:answer, "Answer") %>
           <%= text_field_tag(:answer, @question.answer) %>
         </div>
-        <% @company_names.each do |company_name| %>
-          <div>
-            <%= check_box_tag 'campony', company_name.id %>
-            <%= label_tag(:campony, company_name.name ) %>
-          </div>
-        <% end %>
+        <div>
+          <%= label_tag(:campony, "Company Name" ) %>
+          <%= select_tag(:campony, options_for_select(@company_names.collect{ |c| [c.name, c.id]})) %>
+        </div>
         <div>
           <%= label_tag(:type, "Question Type") %>
           <%= select_tag(:type, options_for_select(@question_types.collect{ |q| [q.question_type, q.id]})) %>

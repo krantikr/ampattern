@@ -1,14 +1,21 @@
 <div class="row">
   <div class="col-lg-12">
     <div class="top-25">
+      <div class="alert alert-success">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        <strong>Congratulations!</strong> Right Answer.
+      </div>
+      <div class="alert alert-danger">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        <strong>Oops!</strong> Wrong Answer.
+      </div>
       <%#= @questions.inspect %>
       <div class="row">
         <table id="myTable">
           <thead>
             <tr>
-              <th>Sl No</th>
+              <th>SN</th>
               <th>Question</th>
-              <th>Action</th>
             </tr>
           </thead>
           <tbody>
@@ -16,37 +23,51 @@
               <tr>
                 <td><%= i+1 %></td>
                 <td>
-                  <p><%= question.question %></p>
-                  <div class="row">
+                  <div>
+                    <p><%= question.question %></p>
+                  </div>
+                  <div class="row options">
                     <div class="col-sm-6">
-                      <p>i) <%= question.option1 %></p>
-                      <p>iii) <%= question.option3 %></p>
+                      <span style="position: absolute; padding: 1px;"></span>
+                      <span class="question-radio" data-option="<%= question.option1 %>" data-id="<%= question.id %>"><input type="radio" name="option" style="margin-right:5px;" /><%= question.option1 %></span>
                     </div>
                     <div class="col-sm-6">
-                      <p>ii) <%= question.option2 %></p>
-                      <p>iV) <%= question.option4 %></p>
+                      <span style="position: absolute; padding: 1px;"></span>
+                      <span class="question-radio" data-option="<%= question.option2 %>" data-id="<%= question.id %>"><input type="radio" name="option" style="margin-right:5px;" /><%= question.option2 %></span>
                     </div>
+                    <div class="col-sm-6">
+                      <span style="position: absolute; padding: 1px;"></span>
+                      <span class="question-radio" data-option="<%= question.option3 %>" data-id="<%= question.id %>"><input type="radio" name="option" style="margin-right:5px;" /><%= question.option3 %></span>
+                    </div>
+                    <div class="col-sm-6">
+                      <span style="position: absolute; padding: 1px;"></span>
+                      <span class="question-radio" data-option="<%= question.option4 %>" data-id="<%= question.id %>"><input type="radio" name="option" style="margin-right:5px;" /><%= question.option4 %></span>
+                    </div>
+                    <span class="answer_<%= question.id %>" data-ans="<%= question.answer %>"></span>
                   </div>
                   <hr>
-                  <div class="row">
-                    <div class="col-sm-3">
+                  <div class="row"  style="font-size:11px">
+                    <div class="col-sm-2">
                       <p>Answer: <%= question.answer %></p>
                     </div>
-                    <div class="col-sm-3">
-                      <p>Question Type: <%= question.question_type_id %></p>
+                    <div class="col-sm-2">
+                      <p>Question Type: <%= question_name(question.question_type_id).to_s.split(' ')[0]   %></p>
                     </div>
-                    <div class="col-sm-3">
-                      <p>Company: <%= question.company_id %></p>
+                    <div class="col-sm-2">
+                      <p>Company: <%= company_name(question.company_id) %></p>
                     </div>
-                    <div class="col-sm-3">
-                      <p>Comments: 5</p>
+                    <div class="col-sm-2">
+                      <p>Posted by: <%= question_posted_by(question) %></p>
+                    </div>
+                    <div class="col-sm-2">
+                      <span><%= link_to 'Edit', edit_admin_question_path(question) %></span> | 
+                      <span><%= link_to 'Delete', admin_question_path(question), method: 'DELETE', remote: true, class:'ques_delete' %></span>
+                    </div>
+                    <div class="col-sm-2">
+                      <span><%= link_to 'Edit', edit_admin_question_path(question) %></span> | 
+                      <span><%= link_to 'Delete', admin_question_path(question), method: 'DELETE', remote: true, class:'ques_delete' %></span>
                     </div>
                   </div>
-                </td>
-                <td>
-                  <p><%= link_to 'Edit', edit_admin_question_path(question) %></p>
-                  <p><%= link_to 'Delete', admin_question_path(question), method: 'DELETE', remote: true, class:'ques_delete' %></p>
-                  <p>Approved</p>
                 </td>
               </tr>
             <% end %>
@@ -63,4 +84,24 @@
   $('.ques_delete').on('click', function(){
     $(this).parent().parent().parent().fadeOut()
   })
+  $('.ques_approve').on('click', function(){
+    $(this).parent().parent().parent().fadeOut()
+  })
+  // answer check start
+  $('.question-radio').on('click', function(){
+    user_ans = $(this).data('option');
+    user_id = $(this).data('id');
+    answer = $('.answer_'+user_id).data('ans')
+    if(user_ans == answer)
+    {
+      $(this).prev().html('<div class="right-ans"></div>');
+      $(".alert-success").fadeTo(2000, 500).slideUp(500);
+    }
+    else
+    {
+      $(this).prev().html('<div class="wrong-ans"></div>');
+      $(".alert-danger").fadeTo(2000, 500).slideUp(500);
+    }
+  });
+  // answer check end
 </script>

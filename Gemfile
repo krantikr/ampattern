@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-
+ruby "2.2.4"
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.4'
 # Use sqlite3 as the database for Active Record
@@ -29,9 +29,11 @@ gem "font-awesome-rails"
 #Use for authentication
 gem 'devise'
 
+#cooment
+gem 'commontator', '~> 4.11.1'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
-
 # Use Unicorn as the app server
 # gem 'unicorn'
 
@@ -39,18 +41,18 @@ gem 'devise'
 # gem 'capistrano-rails', group: :development
 
 group :development, :test do
+  gem 'web-console', '2.0.0.beta3'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
-  gem 'sqlite3'
 end
 
 group :production do
   # Access an IRB console on exception pages or by using <%= console %> in views
-  gem 'web-console', '~> 2.0'
 
+  gem 'pg'
+  gem 'rails_12factor'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
-  gem 'pg'
   gem 'thin'
   gem 'therubyracer'
 end
