@@ -16,6 +16,7 @@
             <tr>
               <th>SN</th>
               <th>Question</th>
+              <th>Action</th>
             </tr>
           </thead>
           <tbody>
@@ -47,27 +48,24 @@
                   </div>
                   <hr>
                   <div class="row"  style="font-size:11px">
-                    <div class="col-sm-2">
+                    <div class="col-sm-3">
                       <p>Answer: <%= question.answer %></p>
                     </div>
-                    <div class="col-sm-2">
+                    <div class="col-sm-3">
                       <p>Question Type: <%= question_name(question.question_type_id).to_s.split(' ')[0]   %></p>
                     </div>
-                    <div class="col-sm-2">
+                    <div class="col-sm-3">
                       <p>Company: <%= company_name(question.company_id) %></p>
                     </div>
-                    <div class="col-sm-2">
+                    <div class="col-sm-3">
                       <p>Posted by: <%= question_posted_by(question) %></p>
                     </div>
-                    <div class="col-sm-2">
-                      <span><%= link_to 'Edit', edit_admin_question_path(question) %></span> | 
-                      <span><%= link_to 'Delete', admin_question_path(question), method: 'DELETE', remote: true, class:'ques_delete' %></span>
-                    </div>
-                    <div class="col-sm-2">
-                      <span><%= link_to 'Edit', edit_admin_question_path(question) %></span> | 
-                      <span><%= link_to 'Delete', admin_question_path(question), method: 'DELETE', remote: true, class:'ques_delete' %></span>
-                    </div>
                   </div>
+                </td>
+                <td>
+                  <p><%= link_to 'Edit', edit_admin_question_path(question) %></p>
+                  <p><%= link_to 'Delete', admin_question_path(question), method: 'DELETE', remote: true, class:'ques_delete' %></p>
+                  <p><%= link_to 'Approve', admin_approve_path(question), method: 'POST', remote: true, class:'ques_approve' %></p>
                 </td>
               </tr>
             <% end %>

@@ -12,6 +12,8 @@ Rails.application.routes.draw do
   
   namespace "admin" do
     resources :question
+    get 'not_approved' => 'question#not_approved', as: :not_approved
+    post 'approve/:id' => 'question#approve', as: :approve
   end
   #comments model
   mount Commontator::Engine => '/commontator'

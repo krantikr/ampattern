@@ -58,6 +58,19 @@ class Admin::QuestionController < ApplicationController
     end
   end
 
+  def not_approved
+    @questions = Question.where(approve: false)
+  end
+
+  def approve
+    question = Question.find(params[:id])
+    question.approve = true
+    question.save
+    respond_to do |format|
+      format.json { render json: { status: "success"} }
+    end
+  end
+
 end
 def get_admin_layouts
   "admin/layouts/admin"
