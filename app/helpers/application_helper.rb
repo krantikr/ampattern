@@ -1,11 +1,19 @@
 module ApplicationHelper
 
 	def company_name(id)
-		Company.find(id).name
+		if id.present?
+			Company.find(id).name
+		else
+			"Other"
+		end	
 	end
 
 	def question_name(id)
-		QuestionType.find(id).question_type
+		if id.present?
+			QuestionType.find(id).question_type
+		else
+			"Other"
+		end
 	end
 
 
