@@ -10,7 +10,7 @@
   <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
   <strong>Oops!</strong> Wrong Answer.
 </div>
-<% @questions.each do |question| %>
+<% @questions.shuffle.each do |question| %>
   <div class="row">
     <div class="col-sm-12">
       <div>
@@ -85,7 +85,7 @@
   });
 </script>
 <% end %>
-
+<%= paginate @questions %>
 <script type="text/javascript">
   // answer check start
   $('.question-radio').on('click', function(){

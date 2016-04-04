@@ -1,7 +1,8 @@
 class QuestionController < ApplicationController
 
   def question
-    @questions = QuestionType.find_by(question_type: params[:ques_type]).question.where(approve: true)
+    questions = QuestionType.find_by(question_type: params[:ques_type]).question.where(approve: true)
+    @questions = questions.order("created_at DESC").page params[:page]
   end
 
   def add_question
