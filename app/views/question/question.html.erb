@@ -10,7 +10,24 @@
   <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
   <strong>Oops!</strong> Wrong Answer.
 </div>
-<% @questions.shuffle.each do |question| %>
+<% @questions.shuffle.each_with_index do |question, i| %>
+  <% if (i+1) % 5 == 0 %>
+    <div class="row">
+      <div class="col-sm-12">
+      <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+      <!-- ampattern_index_1 -->
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-1440938179169907"
+           data-ad-slot="5382083873"
+           data-ad-format="auto"></ins>
+      <script>
+      (adsbygoogle = window.adsbygoogle || []).push({});
+      </script>
+      </div>
+    </div>
+    <hr>
+  <% end %>
   <div class="row">
     <div class="col-sm-12">
       <div>
@@ -104,4 +121,14 @@
     }
   });
   // answer check end
+</script>
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- questions_page_1 -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-1440938179169907"
+     data-ad-slot="9063260270"
+     data-ad-format="auto"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
 </script>
