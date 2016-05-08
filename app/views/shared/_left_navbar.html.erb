@@ -9,8 +9,7 @@
       <span class="icon-bar"></span>
     </button>
     <%= link_to root_path, :class=>"logo" do %>
-      <h1>AMPattern</h1>
-      <p class="slogan">Practice is the only key of success…</p>
+      <%= image_tag "ampattern.png", id:'logo' %>
     <% end %>
   </div>
   <!-- Top Menu Items -->
@@ -140,12 +139,12 @@
   <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
   <div class="collapse navbar-collapse navbar-ex1-collapse">
     <ul class="nav navbar-nav side-nav">
-      <li class="active">
+      <li class="active-menu-home">
         <%= link_to root_path do %>
           <i class="fa fa-fw fa-home"></i> Home 
         <% end %>
       </li>
-      <li>
+      <li class="active-menu-qus">
         <a href="javascript:;" data-toggle="collapse" data-target="#practice"><i class="fa fa-fw fa-arrows-v"></i> Practice Papers <i class="fa fa-fw fa-caret-down"></i></a>
         <ul id="practice" class="collapse">
           <li>
@@ -162,7 +161,7 @@
           </li>
         </ul>
       </li>
-      <li>
+      <li class="active-menu-cmpy">
         <a href="javascript:;" data-toggle="collapse" data-target="#placement"><i class="fa fa-fw fa-arrows-v"></i> Companies <i class="fa fa-fw fa-caret-down"></i></a>
         <ul id="placement" class="collapse">
           <li>
@@ -209,7 +208,7 @@
      <!--  <li>
         <a href="bootstrap-grid.html"><i class="fa fa-fw fa-graduation-cap"></i> Off Campus Drives </a>
       </li> -->
-      <li>
+      <li class="active-menu-about">
         <%= link_to about_path do %>
           <i class="fa fa-fw fa-info"></i> About Us 
         <% end %>

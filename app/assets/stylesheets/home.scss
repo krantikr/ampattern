@@ -5,15 +5,20 @@
 body {
     margin-top: 100px;
     background-color: #222;
-    font-family: FontAwesome;
+    font-family: swissFontsRoman;
 }
-
+h1,h2,h3,h4{
+    font-family: eurostile;
+}
 @media(min-width:768px) {
     body {
         margin-top: 50px;
     }
 }
-
+#logo{
+    height: 55px;
+    margin: 5px 15px;
+}
 #wrapper {
     padding-left: 0;
 }
@@ -27,6 +32,10 @@ body {
 .huge {
     font-size: 50px;
     line-height: normal;
+}
+.panel-footer{
+    font-family: eurostile;
+    font-size: 16px;
 }
 
 @media(min-width:768px) {
@@ -223,9 +232,7 @@ ul.alert-dropdown {
     color: #df8a13;
 }
 .text-shadow{
-	font-size: 16px;
     margin-top: 25px;
-    text-shadow: 1px 4px 5px #bfbfbf;
 }
 .logo{
 	color: #eaeaea !important;
@@ -256,9 +263,9 @@ ul.alert-dropdown {
     border:none;
 }
 .header-line{
-    border: 1px solid #333;
+    border: 1px solid #fc6a27;
     margin-bottom: 20px;
-    width: 200px;
+    width: 180px;
 }
 .alert-success{
     display:none;

@@ -1,3 +1,9 @@
+<style type="text/css">
+  .active-menu-qus a{
+    background-color: #080808;
+    color: #fff !important;
+  }
+</style>
 <div class="row">
   <h2><%= params[:ques_type] %></h2>
   <p class="header-line"></p>
@@ -31,7 +37,7 @@
   <div class="row">
     <div class="col-sm-12">
       <div>
-        <p><%= question.question %></p>
+        <h5><%= question.question %></h5>
       </div>
       <div class="options">
         <div class="col-sm-6">
