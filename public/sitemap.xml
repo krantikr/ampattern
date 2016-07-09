@@ -11,22 +11,22 @@
   <priority>1.00</priority>
 </url>
 <url>
-  <loc>http://www.ampattern.com/question?ques_type=Aptitude+Questions</loc>
+  <loc>http://aptitude.ampattern.com/</loc>
   <changefreq>daily</changefreq>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>http://www.ampattern.com/question?ques_type=English+Questions</loc>
+  <loc>http://english.ampattern.com/</loc>
   <changefreq>daily</changefreq>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>http://www.ampattern.com/question?ques_type=Computer+Questions</loc>
+  <loc>http://computer.ampattern.com/</loc>
   <changefreq>daily</changefreq>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>http://www.ampattern.com/question?ques_type=Reasoning+Questions</loc>
+  <loc>http://reasoning.ampattern.com/</loc>
   <changefreq>daily</changefreq>
   <priority>0.80</priority>
 </url>
